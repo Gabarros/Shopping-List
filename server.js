@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const db = require('./config/keys');
 
 const ItemController = require('./routes/api/ItemController');
@@ -9,9 +8,9 @@ const ItemController = require('./routes/api/ItemController');
 const app = express();
 
 
-// Bodyparser middleware
+// middleware
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 // DB Connection
 mongoose.connect(db.mongoURI, {

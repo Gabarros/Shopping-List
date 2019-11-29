@@ -11,11 +11,11 @@ const Item = require('../../models/Item');
 
 router.get('/', (req, res) => {
     Item
-    .find()
-    .sort({date: -1})
-    .then(items=>{
-        res.json(items)
-    });
+        .find()
+        .sort({ date: -1 })
+        .then(items => {
+            res.json(items)
+        });
 
 });
 
@@ -25,15 +25,32 @@ router.get('/', (req, res) => {
 //@access Public
 
 router.post('/', (req, res) => {
-   const newItem = new Item({
-       name: req.body.name
-   });
+    const newItem = new Item({
+        name: req.body.name
+    });
 
-   newItem.save().then(item =>{
-       res.json(item);
-   })
-  
+    newItem.save().then(item => {
+        res.json(item);
+    })
+
 
 });
+
+// @route DELETE api/items/:id
+// @desc DELETE a Item
+//@access Public
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+
+    Item.findById(id).then(item => {
+
+      Item.deleteOne(item).then(()=>{
+          res.json(item);
+      })
+
+}).catch(err=> res.status(404).json({sucess: false}));
+});
+
 
 module.exports = router;
