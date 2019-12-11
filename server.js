@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const db = require('./config/keys');
 const path = require('path');
+const config = require('config');
+
 const ItemController = require('./routes/api/ItemController');
 
 
@@ -13,7 +14,10 @@ const app = express();
 app.use(express.json());
 
 // DB Connection
-mongoose.connect(db.mongoURI, {
+
+const db = config.get('mongoURI');
+
+mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
