@@ -26,6 +26,8 @@ mongoose.connect(db.mongoURI, {
 
 app.use('/api/items', ItemController);
 
+// Serve static assets if in production
+
 // Configuring Port
 
 const port = process.env.PORT || 5000;
