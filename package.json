@@ -19,7 +19,7 @@
     "bootstrap": "^4.4.1",
     "concurrently": "^5.0.0",
     "config": "^3.2.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.7.12"
   },
   "devDependencies": {
